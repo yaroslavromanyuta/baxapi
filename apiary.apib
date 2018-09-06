@@ -180,23 +180,24 @@ For valid response try integer IDs with positive integer value.\ \ Negative or n
 ### createUser [POST]
 This can only be done by the logged in user.
 
-    + Request (application/json)+ Body
+    + Request (application/json)
+        + Attributes (User)
+
++ Response 200 
+
+    + Body
     
             {
                 "id":123456,
                 "gender": "male",
                 "firstName": "Jon",
                 "lastName": "Dou",
+                "midleName": "",
                 "email": "jon.dou@gmail.com",
                 "password": "qwerty123",
                 "coins": 250,
                 "newsLetters": false
             }
-
-
-+ Response 200 
-
-        successful operation
 
 
 ## User Login [/user/login{?email,password}]
