@@ -180,8 +180,18 @@ For valid response try integer IDs with positive integer value.\ \ Negative or n
 ### createUser [POST]
 This can only be done by the logged in user.
 
-+ Request (application/json)
-    + Attributes (User)
+    + Request (application/json)+ Body
+    
+            {
+                "id":123456,
+                "gender": "male",
+                "firstName": "Jon",
+                "lastName": "Dou",
+                "email": "jon.dou@gmail.com",
+                "password": "qwerty123",
+                "coins": 250,
+                "newsLetters": false
+            }
 
 
 + Response 200 
@@ -217,8 +227,6 @@ Logs user into the system
                 "coins": 250,
                 "newsLetters": false
             }
-
-    + Attributes (string)
 
 
 + Response 400 
@@ -397,7 +405,7 @@ This can only be done by the logged in user.
     + `available`
     + `pending`
     + `sold`
-+ `cost` (number, required) 
++ `cost`: 19.88 (number, required) 
 + `currency`: `$` (string, required) 
 + `id`: 11100 (number, required) 
 + `photoUrls` (array[string], optional) 
@@ -407,16 +415,16 @@ This can only be done by the logged in user.
 
 
 ### Properties
-+ `gender` (enum[string], required) 
++ `gender`: `male`(enum[string], required) 
     + `male`
     + `female`
-+ `firstName` (string, required) 
-+ `lastName` (string, required) 
-+ `email` (string, required) 
-+ `password` (string, required) 
-+ `id` (number, required) 
-+ `midleName` (string, optional) 
-+ `coins` (number, required) 
++ `firstName`: `Jon` (string, required) 
++ `lastName`: `Dou` (string, required) 
++ `email`: `jon.dou@email.com` (string, required) 
++ `password`: `qwerty123` (string, required) 
++ `id`: 1 (number, required) 
++ `midleName`: `` (string, optional) 
++ `coins`: 255 (number, required) 
 + `newsLetters`: `false` (boolean, optional) 
 
 
