@@ -5,329 +5,6 @@ HOST: https://baxmusic/api/1.0.0
 
 # Group store
 
-## Store Order [/store/order]
-
-### placeOrder [POST]
-Place an order for a pet
-
-+ Request (application/json)
-    + Attributes (Order)
-
-
-+ Response 200 (application/json)
-
-        successful operation
-
-    + Attributes (Order)
-
-
-+ Response 400 
-
-        Invalid Order
-
-
-
-
-
-## Store Order By OrderId [/store/order/{orderId}]
-
-+ Parameters
-    + orderId (number, required)
-
-        ID of order that needs to be fetched{LONG}
-
-
-### getOrderById [GET]
-For valid response try integer IDs with value >= 1 and <= 10.\ \ Other values will generated exceptions
-
-+ Response 200 (application/json)
-
-    + Body 
-                
-                {
-                    "id": 11222,
-                    "goods": [
-                        {
-                            "name": "guitar",
-                            "status": "avalible",
-                            "cost": 12.46,
-                            "currency": "$",
-                            "photoUrls": [
-                                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
-                                "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
-                            ]
-                        } , 
-                        {
-                            "name": "tambourine",
-                            "status": "avalible",
-                            "cost": 99999.99,
-                            "currency": "$",
-                            "photoUrls": [
-                                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
-                                "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
-                            ]
-                        }
-                        ],
-                    "shipDate": 1528894400000,
-                    "status": "recieved"
-                }
-
-    + Attributes (Order)
-
-
-+ Response 400 
-
-        Invalid ID supplied
-
-
-
-
-+ Response 404 
-
-        Order not found
-
-
-
-
-### deleteOrder [DELETE]
-For valid response try integer IDs with positive integer value.\ \ Negative or non-integer values will generate API errors
-
-+ Response 200 
-
-
-
-+ Response 400 
-
-        Invalid ID supplied
-
-
-
-
-+ Response 404 
-
-        Order not found
-
-
-
-
-
-
-# Group user
-
-## User [/user]
-
-### createUser [POST]
-This can only be done by the logged in user.
-
-+ Request (application/json)
-    + Attributes (User)
-
-
-+ Response 200 
-
-        successful operation
-
-
-
-
-
-## User Login [/user/login{?email,password}]
-
-### loginUser [GET]
-Logs user into the system
-+ Parameters
-    + email (string, required)
-
-        The user email for login
-
-    + password (string, required)
-
-        The password for login in clear text
-
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "id":123456,
-                "gender": "male",
-                "firstName": "Jon",
-                "lastName": "Dou",
-                "email": "jon.dou@gmail.com",
-                "password": "qwerty123",
-                "coins": 250,
-                "newsLetters": false
-            }
-
-    + Attributes (string)
-
-
-+ Response 400 
-
-        Invalid username/password supplied
-
-
-
-
-
-## User Logout [/user/logout]
-
-### logoutUser [GET]
-Logs out current logged in user session
-
-+ Response 200 
-
-        successful operation
-
-
-
-
-
-## User By UserId [/user/{userId}]
-
-+ Parameters
-    + userId (string, required)
-
-        The name that needs to be fetched. Use 111 for testing.
-
-
-### getUserById [GET]
-Get user by user id
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "id":123456,
-                "gender": "male",
-                "firstName": "Jon",
-                "lastName": "Dou",
-                "email": "jon.dou@gmail.com",
-                "password": "qwerty123",
-                "coins": 250,
-                "newsLetters": false
-            }
-
-    + Attributes (User)
-
-
-+ Response 400 
-
-        Invalid username supplied
-
-
-
-
-+ Response 404 
-
-        User not found
-
-
-
-
-### updateUser [PUT]
-This can only be done by the logged in user.
-
-+ Request (application/json)
-    + Attributes (User)
-
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "id":123456,
-                "gender": "male",
-                "firstName": "Jon",
-                "lastName": "Dou",
-                "email": "jon.dou@gmail.com",
-                "password": "qwerty123",
-                "coins": 250,
-                "newsLetters": false
-            }
-
-    + Attributes (Good)
-
-+ Response 400 
-
-        Invalid user supplied
-
-
-
-
-+ Response 404 
-
-        User not found
-
-
-
-
-### deleteUser [DELETE]
-This can only be done by the logged in user.
-
-+ Response 200 
-
-
-
-+ Response 400 
-
-        Invalid username supplied
-
-
-
-
-+ Response 404 
-
-        User not found
-
-
-
-
-
-
-# Group good
-
-## Store Goods [/store/goods]
-
-### getAllGoods [GET]
-
-+ Response 200 (application/json)
-
-    + Body
-
-            [
-                {
-                    "name": "guitar",
-                    "status": "avalible",
-                    "cost": 12.46,
-                    "currency": "$",
-                    "photoUrls": [
-                        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
-                        "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
-                    ]
-                } , 
-                {
-                    "name": "tambourine",
-                    "status": "avalible",
-                    "cost": 99999.99,
-                    "currency": "$",
-                    "photoUrls": [
-                        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
-                        "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
-                    ]
-                }
-            ]
-
-    + Attributes (array[Good])
-
-
-
-
-# Group order
-
 ## Store Orders [/store/orders]
 
 ### getOrders [GET]
@@ -396,6 +73,304 @@ Returns a map of status codes to quantities
 
     + Attributes (array[Order])
 
+
+## Store Order [/store/order]
+
+### placeOrder [POST]
+Place an order for a pet
+
++ Request (application/json)
+    + Attributes (Order)
+
+
++ Response 200 (application/json)
+
+        successful operation
+
+    + Attributes (Order)
+
+
++ Response 400 
+
+        Invalid Order
+
+
+## Store Order By OrderId [/store/order/{orderId}]
+
++ Parameters
+    + orderId (number, required)
+
+        ID of order that needs to be fetched{LONG}
+
+
+### getOrderById [GET]
+For valid response try integer IDs with value >= 1 and <= 10.\ \ Other values will generated exceptions
+
++ Response 200 (application/json)
+
+    + Body 
+                
+                {
+                    "id": 11222,
+                    "goods": [
+                        {
+                            "name": "guitar",
+                            "status": "avalible",
+                            "cost": 12.46,
+                            "currency": "$",
+                            "photoUrls": [
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
+                                "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
+                            ]
+                        } , 
+                        {
+                            "name": "tambourine",
+                            "status": "avalible",
+                            "cost": 99999.99,
+                            "currency": "$",
+                            "photoUrls": [
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
+                                "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
+                            ]
+                        }
+                        ],
+                    "shipDate": 1528894400000,
+                    "status": "recieved"
+                }
+
+    + Attributes (Order)
+
+
++ Response 400 
+
+        Invalid ID supplied
+
+
+
+
++ Response 404 
+
+        Order not found
+
+
+### deleteOrder [DELETE]
+For valid response try integer IDs with positive integer value.\ \ Negative or non-integer values will generate API errors
+
++ Response 200 
+
+
+
++ Response 400 
+
+        Invalid ID supplied
+
+
+
+
++ Response 404 
+
+        Order not found
+
+
+
+# Group user
+
+## User [/user]
+
+### createUser [POST]
+This can only be done by the logged in user.
+
++ Request (application/json)
+    + Attributes (User)
+
+
++ Response 200 
+
+        successful operation
+
+
+## User Login [/user/login{?email,password}]
+
+### loginUser [GET]
+Logs user into the system
++ Parameters
+    + email (string, required)
+
+        The user email for login
+
+    + password (string, required)
+
+        The password for login in clear text
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id":123456,
+                "gender": "male",
+                "firstName": "Jon",
+                "lastName": "Dou",
+                "email": "jon.dou@gmail.com",
+                "password": "qwerty123",
+                "coins": 250,
+                "newsLetters": false
+            }
+
+    + Attributes (string)
+
+
++ Response 400 
+
+        Invalid username/password supplied
+
+
+## User Logout [/user/logout]
+
+### logoutUser [GET]
+Logs out current logged in user session
+
++ Response 200 
+
+        successful operation
+
+
+
+## User By UserId [/user/{userId}]
+
++ Parameters
+    + userId (string, required)
+
+        The user id that needs to be fetched.
+
+
+### getUserById [GET]
+Get user by user id
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id":123456,
+                "gender": "male",
+                "firstName": "Jon",
+                "lastName": "Dou",
+                "email": "jon.dou@gmail.com",
+                "password": "qwerty123",
+                "coins": 250,
+                "newsLetters": false
+            }
+
+    + Attributes (User)
+
+
++ Response 400 
+
+        Invalid username supplied
+
+
+
+
++ Response 404 
+
+        User not found
+
+
+### updateUser [PUT]
+This can only be done by the logged in user.
+
++ Request (application/json)
+    + Attributes (User)
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id":123456,
+                "gender": "male",
+                "firstName": "Jon",
+                "lastName": "Dou",
+                "email": "jon.dou@gmail.com",
+                "password": "qwerty123",
+                "coins": 250,
+                "newsLetters": false
+            }
+
+    + Attributes (User)
+
++ Response 400 
+
+        Invalid user supplied
+
+
+
+
++ Response 404 
+
+        User not found
+
+
+### deleteUser [DELETE]
+This can only be done by the logged in user.
+
++ Response 200 
+
+
+
++ Response 400 
+
+        Invalid username supplied
+
+
+
+
++ Response 404 
+
+        User not found
+
+
+
+
+
+
+# Group good
+
+## Store Goods [/store/goods]
+
+### getAllGoods [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "name": "guitar",
+                    "status": "avalible",
+                    "cost": 12.46,
+                    "currency": "$",
+                    "photoUrls": [
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
+                        "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
+                    ]
+                } , 
+                {
+                    "name": "tambourine",
+                    "status": "avalible",
+                    "cost": 99999.99,
+                    "currency": "$",
+                    "photoUrls": [
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/C.F._Martin_GRH_160_or_000-16RGT_cropped.png/200px-C.F._Martin_GRH_160_or_000-16RGT_cropped.png",
+                        "https://megamusic.blob.core.windows.net/images/0006115_dxp-junior-series-5-piece-drum-kit-pink_550.jpg"
+                    ]
+                }
+            ]
+
+    + Attributes (array[Good])
 
 
 
