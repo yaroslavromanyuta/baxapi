@@ -200,63 +200,9 @@ This can only be done by the logged in user.
             }
 
 
-## User Login [/user/login{?email,password}]
-
-### loginUser [GET]
-Logs user into the system
-+ Parameters
-    + email (string, required)
-
-        The user email for login
-
-    + password (string, required)
-
-        The password for login in clear text
-
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "id":123456,
-                "gender": "male",
-                "firstName": "Jon",
-                "midleName": "",
-                "lastName": "Dou",
-                "email": "jon.dou@gmail.com",
-                "password": "qwerty123",
-                "coins": 250,
-                "newsLetters": false
-            }
-
-
-+ Response 400 
-
-        Invalid username/password supplied
-
-
-## User Logout [/user/logout]
-
-### logoutUser [GET]
-Logs out current logged in user session
-
-+ Response 200 
-
-        successful operation
-
-
-
-## User By UserId [/user/{userId}]
-
-+ Parameters
-    + userId (string, required)
-
-        The user id that needs to be fetched.
-
-
 ### getUserById [GET]
-Get user by user id
+
+Get user then you logged in
 
 + Response 200 (application/json)
 
@@ -342,6 +288,51 @@ This can only be done by the logged in user.
 
         User not found
 
+
+## User Login [/user/login{?email,password}]
+
+### loginUser [GET]
+Logs user into the system
++ Parameters
+    + email (string, required)
+
+        The user email for login
+
+    + password (string, required)
+
+        The password for login in clear text
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id":123456,
+                "gender": "male",
+                "firstName": "Jon",
+                "midleName": "",
+                "lastName": "Dou",
+                "email": "jon.dou@gmail.com",
+                "password": "qwerty123",
+                "coins": 250,
+                "newsLetters": false
+            }
+
+
++ Response 400 
+
+        Invalid username/password supplied
+
+
+## User Logout [/user/logout]
+
+### logoutUser [GET]
+Logs out current logged in user session
+
++ Response 200 
+
+        successful operation
 
 
 
